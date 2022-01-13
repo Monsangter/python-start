@@ -5,7 +5,7 @@ def sumOfDigits(num):
     for c in list(str(num)):
         sum+=int(c)
     return sum
-
+print(list(str(4123)))
 
 print(sumOfDigits(41234))
 
