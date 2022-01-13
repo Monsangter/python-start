@@ -17,3 +17,5 @@ print(prime)
 orders = ['potato', ['pizza', 'Coke', 'salad'], 'hamburger']
 print(orders[1])
 print(orders[1][2])
+
+matrix=[[1,2,3], [4,5,6], [7,8,9]]
