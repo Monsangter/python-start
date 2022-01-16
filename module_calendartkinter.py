@@ -3,7 +3,7 @@ c = calendar.TextCalendar()
 m = c.prmonth(2021,2)
 print(,)
 
-import tkinter as tk
+import tkinterpractice as tk
 
 s= "life is short\n Use Python"
 

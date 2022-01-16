@@ -8,7 +8,7 @@ widget = Label(None, text='I love Python!')
 widget.pack()
 '''
 Label = 'This is a Label'
-from tkinter import *
+from tkinterpractice import *
 print(type(label))
 
 del tkinter
