@@ -7,14 +7,24 @@ class Person:
     legs = 2
 
     def eat(self):
-        print '얌냠...'
+        print('얌냠...')
 
     def sleep(self):
-        print '쿨쿨...'
+        print('쿨쿨...')
 
     def talk(self):
-        print '주절주절'
+        print('주절주절')
 
 class Student(Person):
     def study(self):
-        print '열공열공...'
+        print('열공열공...')
+
+
+lee = Person()
+print(lee.mouth)
+print(lee.talk())
+kim = Student()
+print(kim.mouth)
+print(kim.talk())
+
+print(kim.study())
