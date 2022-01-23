@@ -20,3 +20,12 @@ class Fridge:
 
 class Food:
     pass
+
+f = Fridge()
+apple = Food()
+elephant = Food()
+
+print(f.open())
+print(f.put(apple))
+print(f.put(elephant))
+print(f.foods)
