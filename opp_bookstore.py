@@ -19,4 +19,5 @@ b=Book()
 b.setData('누가 내 치즈를 먹었을까', '300원', '미키')
 b.printData()
 
-reload(bookstore)ㅋㅊㅍㅋㅌㅊㅍ
+b2=Book()
+b2.setData('내가 먹었지롱, '200원', '미니')
