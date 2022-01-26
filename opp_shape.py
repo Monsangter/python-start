@@ -5,6 +5,8 @@ class Shape:
     def __add__(self, other):
         return self.area + other.area
 
+
+class Shape1:
     def __cmp__(self, other):
         if self.area < other.area :
             return -1
@@ -19,7 +21,10 @@ a.area = 20
 b=Shape()
 b.area = 10
 print (a+b)
+c=Shape1()
+c.area = 1
+d=Shape1()
+d.area = 0
 
-
-if a > b:
-    print('a가 더 넓어요~')
+if c > d:
+    print('C가 더 넓어요~')
