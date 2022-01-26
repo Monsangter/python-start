@@ -18,11 +18,11 @@ class Book:
         return self.title
 
 
-b=Book()
-b.setData('누가 내 치즈를 먹었을까', '300원', '미키')
+b=Book('누가 내 치즈를 먹었을까', '300원', '미키')
 b.printData()
 
-b2=Book()
-b2.setData('내가 먹었지롱', '200원', '미니')
+b2=Book('내가 먹었지롱', '200원', '미니')
+print(b2)
 
 b3=Book('나두 좀 줘', '100원', '쥐벼룩')
+print(b3)
