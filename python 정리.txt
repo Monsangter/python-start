@@ -693,4 +693,226 @@ reload(모듈)
 
 함수의 사용법을 확인 할 수 있다.
 
-—
+—round 함수. 반올림해서 반환해줌
+
+—`sys 모듈`
+
+파이썬 인터프리터의 디폴트 프롬프트는
+
+```python
+>>>이다.
+
+import sys
+
+sys.ps1 = ‘^^; ‘
+
+를 해주면 디폴트 프롬프트가 ^^; 으로 바뀐다.
+
+sys.exit()하면 인터프리터 종료.
+```
+
+—os 모듈
+
+운영체제를 제어할 수 있다.
+
+```python
+import os
+
+-os.getcwd()
+
+get current working directory의 약자이다.
+
+-os.listdir()
+
+cwd에 어떤 파일들이 있는지 보여준다.
+
+-os.chdir(하위디렉토리)
+
+하위디렉토리로 이동
+
+-os.chdir(’..’)
+
+상위 디렉토리로 이동.
+```
+
+—re 모듈
+
+정규 표현식을 이용해 문자열을 다룬다.
+
+```python
+import re, glob
+
+p = re.compile(’.*p.*n.*’)
+
+for i in glob.glob(’*’):
+
+m= p.match(i)
+
+if m:
+
+print m.group()
+
+result
+
+pycon.ico
+
+python.exe
+
+pythonw.exe
+
+w9xpopen.exe
+```
+
+(.)는 임의의 문자
+
+(*)는 0개 이상의 문자.
+
+즉 현재 디렉토리에서 p다음 n이 나오는 이름을 가지고 있는 파일을 찾아준다.
+
+-`sub()함수`
+
+re.sub（정규 표현식, 대상 문자열 , 치환 문자)
+
+import re
+
+s=re.sub(’[:,\.]’, ‘’)
+
+콜론, 쉼표, 마침표 제거.
+
+—`webbrowser 모듈`
+
+```python
+import webbrowser
+
+url=’http://www.python.org/’
+
+webbrowser.open(url)
+```
+
+—`random 모듈`
+
+```python
+import random
+
+random.random()
+
+0이상 1미만의 숫자중 하나를 반환한다.
+
+radom.randrange(1,7)
+
+1이상 6이하의 숫자 하나를 반환한다.
+
+shuffle()함수는 시퀀스를 뒤죽박죽으로 섞어놓는 함수이다.
+
+abc = [’a’, ‘b’, ‘c’, ‘d’, ‘e’]
+
+random.shuffle(abc)
+
+하면 리스트의 순서가 바뀐다.
+
+random.choice(abc)
+
+하면 시퀀스 abc중 원소 하나를 뽑아 반환해준다.
+
+ex)random.choice([True,False])
+```
+
+8.파일 다루기.
+
+파일을 복사하고 지우는일 (os모듈,shutil모듈)을 넘어서 파일의 내용을 읽고 쓰는 방법을 알아보자.
+
+-read()
+
+```python
+f = open(’C:\\python_newbie\\Python_for.txt)
+
+f.read()
+```
+
+해당 디렉토리의 txt파일을 열어 f라는 이름을 붙어주고 read함수로 읽는다.
+
+다만 read함수는 \n등의 개행문자도 그대로 리턴해주기 때문에
+
+```python
+buffer = f.read()
+
+print(buffer)
+```
+
+이런 식으로 쓰면 개행이 번역된 프린트를 볼 수 있다.
+
+-write()
+
+```python
+f = open('C:\\python_newbie\\letter.txt', 'w')
+
+파일의 데이터를 읽기만 했을떄와는 달리, 파일에 데이터를 쓰려고 할떄는 미리 파일에 데이터를 쓰겠다고 표시해줄 필요가 있다.
+
+f.write(’Dear Father,’)
+
+f.close()
+```
+
+지정된 디렉토리에 letter.txt가 생겼음을 확인 할 수 있다.
+
+close로 닫는 작업까지 해줘야 써준 글자가 고스란히 써진다.
+
+다만 w모드로 파일을 오픈하게 되면 원래 있던 데이터가 없어져 버린다.
+
+데이터를 지우지 않고 내용을 추가하려면 `open(’dir’, ‘a+’)`로 열어야한다.
+
+—라인 한줄씩 다루기.
+
+```python
+import os
+
+os.getcwd()
+
+os.listdir()
+
+f = open(’LICENSE.txt)
+
+‘A. HISTORY OF THE SOFTWARE\n’
+```
+
+f.readline()을 대화형 인터프리터에 계속 쳐가면
+
+‘\n’ 개행문자까지 한줄 씩 다음 줄을 읽는다.
+
+```python
+for x in range(5):
+
+f.readline()
+```
+
+으로 원하는 수의 라인을 읽을 수도 있다.
+
+```python
+f= open(’LICENSE.txt’)
+
+lines = f.readlines()
+
+lines[:2]
+```
+
+여기서는 readline 함수가 아닌 readlines를 활용했다.
+
+readlines를 활용하면 한줄 한줄이 각각의 리스트 원소로 들어간다.
+
+```python
+for l in lines[26:41]:
+
+print(l, end=’’)
+```
+
+이를 활용해 이런식으로로 원하는 라인만 출력할 수 있다.
+
+-대문자로 변환.
+
+`s = s.upper()`
+
+-리스트 문자열 합치기.
+
+abc=[’A’, ‘B’, ‘C’]
+
+str1 = ‘구분자‘.join(abc)
