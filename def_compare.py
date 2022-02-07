@@ -6,4 +6,4 @@ def compare():
     else:
         print(a==b)
 
-judge()
+compare()
