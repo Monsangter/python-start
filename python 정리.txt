@@ -1,5 +1,3 @@
-# 파이썬 정리 Ver.2
-
 1. 프로그래밍이란?
 
 컴퓨터가 알아듣는 말로 소프트웨어를 만드는 것이 프로그래밍이라고 할 수 있다.
@@ -25,7 +23,7 @@
 - 오픈소스 이지만 강력하다. 시스템 프로그래밍이나 하드웨어 제어와 같은 매우 복잡한 연산은 어울리지 않으나, 다른 언어로 만든 프로그램을 파이썬 프로그램에 포함 시킬 수 있다. 즉 전반적 뼈대는 파이썬으로 만들고, 빠른 실행 속도가 필요한 부분은 C로 만들 수 있다. 파이썬 라이브러리 중에는 C로 만들어진 것도 많다.
 - 다른 언어에서 보게되는 단락구분의 괄호가 없이 줄을 맞춰 단락을 구분하기 때문에 자연스럽게 예쁘게 작성하게 되고 이는 가독성에 큰 도움이 된다.
 
-----
+---
 
 2-2 파이썬으로 할 수 있는 것.
 
@@ -60,7 +58,7 @@
 - 예약어는 def,while 등 프로그래밍 언어에서 문법적인 용도로 사용하고 있는 단어를 말한다.
 - 문장 실행후의 ‘...’은 문장이 끝나지 않았음을 의미하며 엔터키 입력시 문장이 종료되고 결과가 출력된다.
 
-----
+---
 
 2-6 파이썬과 에디터
 
@@ -138,15 +136,59 @@ a = 0x8ff #숫자가 0x로 시작되면 된다.
 
 왜 파이썬에서 문자열을 만드는 방법이 4가지나 될까?
 
-1. 문자열 안에 작은 따옴표나 큰따옴표를 포함시키고 싶을때
+문자열 안에 작은 따옴표나 큰따옴표를 포함시키고 싶을때 문제가 발생하게 된다.
 
-1. 변수(variable)
+`“sangdo’s house”`
 
-어떤 값을 갖는 하나의 저장공간이라 할 수 있다.
+`‘“sangdo” is good’`
 
-저장공간에 특정한 이름을 붙이고 값을 할당할 수 있다.
+단 백슬래시를 사용해도 문자열을 둘러싸는 기호가 아닌 문자그 자체를 뜻하기 때문에 해결할 수 있다. 하지만 깔끔하지 않다.
 
-크게 숫자형 변수와, 문자형 변수등이 있다.
+```python
+'sangdo\'s house'
+"\"sangdo\" is good"
+```
+
+3-2-2 여러줄인 문자열을 변수에 대입하기
+
+1. 줄을 바꾸는 이스케이프 코드 `\n` 를 삽입한다
+2. “””나 ‘’’로 감싼다.
+
+```python
+a = "sangdo\nbae"
+
+or
+
+a = '''
+sangdo
+bae
+'''
+
+or
+
+a = """
+sangdo
+bae
+"""
+
+print(a)
+
+#result 모두 같은 결과를 낸다.
+#하지만 따옴표로 감싸는게 훨씬 깔끔하다
+
+sangdo
+bae
+```
+
+3-2-3 이스케이프 코드들
+
+프로그래밍에 있어 미리 정의해 둔 “문자 조합”을 이스케이프 코드라 한다.
+
+`\n`개행, `\t`문자열 사이 탭간격, `\\`백슬래시 문자로 표현, `\’`, `\”` 등은 활용 빈도가 높다.
+
+`\r` 캐리지리턴 `\f` 폼피드 `\a` 출력시 삑소리 `\b` 백 스페이스 `\000` 널문자 등은 프로그램에서 잘 사용하지 않는다.
+
+3-2-4 문자열 연산
 
 5.리스트
 
@@ -167,24 +209,32 @@ a = 0x8ff #숫자가 0x로 시작되면 된다.
 해당 리스트 맨 마지막 위치에 전달 받은 데이터를 추가해주는 append 함수가 있다.
 
 ex. 
-ㅡㅡㅡ-1=-=-1=3ㅁㄹ
+
+```python
 exlist= [ 2 , 3, 1]
 
 exlist.sort()
 
 result [1, 2, 3]
+```
 
+```python
 exlist.reverse()
 
 result [1, 3, 2]
+```
 
+```python
 exist.append(4)
 
 result [2, 3 , 1 , 4]
+```
 
+```python
 del exlist[0]
 
 result [3, 1]
+```
 
 6.인터프리터와 컴파일러
 
@@ -218,15 +268,15 @@ python org에서 배포하는 일반적인 배포판과
 
 파이썬 패키지를 추가로 설치 사용할때는 파이썬 버전을 맞춰야 할 떄가 있는데, 그럴떄 파이썬 가상환경을 활용하면 파이썬 버전을 다르게 할 수 있다.
 
-conda create -n (환경이름) python=(파이썬버전)
+`conda create -n (환경이름) python=(파이썬버전)`
 
 하면 아나콘다 밑 envs fㅏ는 곳에 환경이름에 해당하는 환경이 해당 파이썬 버전으로 만들어진다.
 
 그다음에 만들어진 환경으로 이동하고싶으면
 
-conda activate ( 환경이름) 하면 앞에 베이스가 환경이름 으로 바뀐다.
+`conda activate ( 환경이름)` 하면 앞에 베이스가 환경이름 으로 바뀐다.
 
-기본으로 다시 돌아가려면 conda deactivate 하면된다.
+기본으로 다시 돌아가려면 `conda deactivate` 하면된다.
 
 1. 파이썬 인터프리터
 
@@ -242,6 +292,7 @@ conda activate ( 환경이름) 하면 앞에 베이스가 환경이름 으로 �
 
 1. while 사용 반복문
 
+```python
 num = 0
 
 while num ≤ 100:
@@ -249,31 +300,35 @@ while num ≤ 100:
 print(num)
 
 num = num + 1
+```
 
 -1
 
-a= input()등으로 변수값을 입력 받을 수 있다. 
+`a= input()`등으로 변수값을 입력 받을 수 있다. 
 
 -2
 
 round()는 반올림을 해주는 함수다.
 
-round(1.2345, 2) → 1.23
+`round(1.2345, 2) → 1.23`
 
-round(1.2345, 3) → 1.235
+`round(1.2345, 3) → 1.235`
 
 1. 조건문(if-elif-else)
 
+```python
 if a < 0:
 
 elif a == 0:
 
 else:
+```
 
 %는 나머지 계산이고 나머지를 반환한다. //는 몫 반환.
 
 -1 조건에 따라 반복문 중단하기
 
+```python
 while True:
 
 a= int(input())
@@ -281,40 +336,51 @@ a= int(input())
 if a > 0 :
 
 break
+```
 
 1. for을 사용하는 반복문
 
 파이썬에서 포문은 리스트와같은 시퀀스(sequence)를 이용해 원하는 명령어를 반복할떄 쓰인다.
 
+```python
 x=[’ab’,’abc,’abcd’]
 
 for x in exalist:
 
 print(x, len(x))
+```
 
 -1 range()
 
+```python
 list(range(2,7)) #2이상 7미만 리스트를 만들어라.
 
 result [2,3,4,5,6]
+```
 
+```python
 for I in range(2,7):
 
 print(i)
+```
 
 -2 split()
 
 **문자열.split()** 
 
-split(sep='구분자', maxsplit=분할횟수)
+`split(sep='구분자', maxsplit=분할횟수)`
 
 구분자를 기준으로 문자열을 구분해 리스트를 만들어준다.
 
 스플릿 메소드를 사용해 문자열을 분할할 수 있다.
 
-ex) ‘0 100’.split()
+ex) 
+
+```python
+‘0 100’.split()
 
 result [’0’, ‘100’]
+```
 
 1. 함수
 
@@ -322,15 +388,19 @@ result [’0’, ‘100’]
 
 -1
 
+```python
 len([1, 2, 3, 4, 5)
 
 result = 5
+```
 
 -2
 
+```python
 def boy():
 
 print(”소년”)
+```
 
 이런식으로 직접 함수를 작성할 수도 있다.
 
@@ -338,22 +408,25 @@ print(”소년”)
 
 -3
 
-이런 식으로 print(m, ‘*’, n, '=', m*n)
+이런 식으로 `print(m, ‘*’, n, '=', m*n)`
 
-출력시 함수의 인자가 너무 많다면
+출력시 함수의 인자가 너무 많다면 
 
 파이썬 3.6버전 이상부터 f-문자열을 사용할 수 있다.
 
+```python
 m=2
 
 n=1
 
 print(f’{m} * {n} = {m*n}’)
+```
 
 1. 반환문
 
 print 로 결과를 출력하는 걸 넘어서. 함수를 실행하면 결과값을 남긴다. y=x라는 일반적 수학 함수처럼.
 
+```python
 def f1(x):
 
 return y
@@ -363,7 +436,9 @@ c=f1(10)
 print(c)
 
 result 10
+```
 
+```python
 def quiz():
 
 ans =input(’1 + 1 =  ‘)
@@ -371,6 +446,7 @@ ans =input(’1 + 1 =  ‘)
 return 1+2 == int(ans)
 
 result는 true나 false둘중 하나로 반환된다.
+```
 
 1. 지역변수와 전역변수
 
@@ -378,11 +454,13 @@ result는 true나 false둘중 하나로 반환된다.
 
 지역변수는 함수안에서, 함수의 종료시까지만 영향을 미친다.
 
+```python
 a= 1
 
 def f1():
 
 a=10
+```
 
 일떄 f1안에서는 a=10이 새로 선언되고 종료되는 것과 다름없다.
 
@@ -392,13 +470,15 @@ a=10
 
 함수를 딱 한줄로 만들게 해주는 형식이다.
 
+```python
 def hap(x, y):
 
-return x + y
+	return x + y
+```
 
 를
 
-(lambda x,y: x+y)(10,20)
+`(lambda x,y: x+y)(10,20)`
 
 으로 한줄로 간단하게 표현가능하다.
 
@@ -408,11 +488,9 @@ return x + y
 
 그리고 리스트로부터 원소를 하나씩 꺼내 함수를 적용시킨 다음 결과를 새로운 리스트에 담아준다.
 
-list(map(lambda x: x ** 2, range(5)))
+`list(map(lambda x: x ** 2, range(5)))`
 
-result
-
-[0,1,2,3,4]라는 리스트를 생성
+result [0,1,2,3,4]라는 리스트를 생성
 
 [0,1,4,9,16]으로 구현해준다.
 
@@ -422,17 +500,22 @@ result
 
 시퀀스의 원소들을 누적해서 함수에 적용시킨다.
 
+```python
 from functors import reduce
 
 reduce(lambda x,y: x+y, [0,1,2,3,4])
 
 result 10
+```
 
 리스트를 전부 sum한 것과 같다.
+
+```python
 
 reduce(lambda x,y: y+x, ‘abcde’)
 
 result ‘edcba’
+```
 
 역순한 것과 같다.
 
@@ -444,11 +527,25 @@ filter(함수, 리스트)
 
 true인 값들로 새로운 리스트를 만들어준다.
 
+```python
 list(filter(lambda x: x<5, range(10)))
 
 result[0,1,2,3,4]
+```
 
+```python
+list(filter(lambda x: x<5, range(10)))
+
+result[0,1,2,3,4]
+```
+
+```python
 list(filter(lambda x: x% 2, range(10)))
+
+result [1, 3, 5, 7, 9] 
+
+결과값이 1 true인 것.
+```
 
 1. 데이터 타입.
 
@@ -470,13 +567,17 @@ list(filter(lambda x: x% 2, range(10)))
 
 타입함수로 자료형을 확인할 수 있다.
 
+```python
 type(6)
 
 result <type ‘int’>
+```
 
+```python
 type(’A’)
 
 result <type ‘str’>
+```
 
 파이썬의 자료형은 숫자, 시퀀스, 매핑으로 크게 나눌 수 있다.
 
@@ -484,33 +585,33 @@ result <type ‘str’>
 
 숫자를 나타내는 자료형으로는
 
-type(10)
+`type(10)`
 
 정수(int)
 
-type(2.8)
+`type(2.8)`
 
 부동소수점수(float)
 
-type(3+4j)
+`type(3+4j)`
 
 복소수(complex)가 있다.
 
 —3 시퀀스
 
-type(”python”)
+`type(”python”)`
 
 <class ‘str’>
 
 문자열(str)
 
-type([’1’, ’2’, ’3’])
+`type([’1’, ’2’, ’3’])`
 
 <class ‘list’>
 
 리스트(list)
 
-type(’1’, ‘2’, ‘3’)
+`type(’1’, ‘2’, ‘3’)`
 
 <class ‘tuple’>
 
@@ -524,66 +625,75 @@ type(’1’, ‘2’, ‘3’)
 
 아래와 같이 문자열 인덱스를 이용해 문자열의 일부를 복사할 수 있습니다.
 
-p=’Python’
+```python
+`p=’Python’`
 
-p[0:2]
-
-result ‘Py’
-
-p=[:2]
+`p[0:2]`
 
 result ‘Py’
 
-시작 인덱스가 0일떄는 콤마 앞의 0을 생략할 수도 있다.
+`p=[:2]`
 
-p[-2:]
+result ‘Py’
+
+#시작 인덱스가 0일떄는 콤마 앞의 0을 생략할 수도 있다.
+
+`p[-2:]`
 
 result ‘on’
 
-음수 인덱스를 사용해 문자열의 뒷부분을 복사 할 수도 있다.
+#음수 인덱스를 사용해 문자열의 뒷부분을 복사 할 수도 있다.
 
-p[:]
+`p[:]`
 
 result ‘Python’
 
-콤마 앞뒤 숫자를 모두 생략하면 문자열 전부를 복사할 수 있다.
+#콤마 앞뒤 숫자를 모두 생략하면 문자열 전부를 복사할 수 있다.
 
-p[::-1]
+`p[::-1]`
 
 result ‘nohtyP’
 
-역순으로 복사할 수도 있다.
+#역순으로 복사할 수도 있다.
+```
 
 —4 매핑
 
 딕셔너리(dict)는 키와 값으로 이루어지는데 이런 것을 매핑이라 한다.
 
+```python
 type({’one’:1, ‘two’:2, ‘three’:3})
 
 <class ‘dict’>
+```
 
 —5 불
 
 참 거짓을 표현하는 불.
 
+```python
 type(False)
 
 <class ‘bool’>
+```
 
 —6 세트
 
 집합을 표현하는 세트
 
+```python
 fruits= {’apple’, ‘banana’, ‘orange’}
 
 집합으로서의 특성이 있으며 집합 연산을 사용할 수 있다.
 
-세트는 원소의 순서가 유지되지 않고 중복원소를 갖지 않은
+세트는 원소의 순서가 유지되지 않고 중복원소를 갖지 않음
 
 fruits.add(’mango’)
 
 result fruits={’apple’, ‘banana’, ‘mango’, ‘orange’}
+```
 
+```python
 set1= set() 이런식으로 빈세트를 선언할 수도 있다.
 
 set1 & set2 교집합
@@ -591,7 +701,9 @@ set1 & set2 교집합
 set1 | set2 합집합
 
 set1-set2 차집합
+```
 
+```python
 alphabet = list(’google’)
 
 result [’g’, ‘o’, ‘o’, ‘g’, ‘l’, ‘e’]
@@ -599,6 +711,7 @@ result [’g’, ‘o’, ‘o’, ‘g’, ‘l’, ‘e’]
 set(alphabet)
 
 result {’e’, ‘o’, ‘g’, ‘l’}
+```
 
 지금까지 데이터타입. 자료구조를 다루었다.
 
@@ -614,23 +727,31 @@ import를 활용해 남이만들어 놓은 부품을 가져다 활용할 수도 
 
 —1.math
 
+```python
 import math
 
 math.sqrt(2)
 
 result 1.41421345...
+제곱근을 float으로 반환한다.
 
 math.pi
 
-3.141592653
+result 3.141592653
+
+math.pow(x,y)함수. x의 y승을 반환한다.
+
+반환형은 언제나 float 타입이며 정수타입 계산을 원한다면 **를 사용하면 된다.
+```
 
 —2.calendar
 
+```python
 import calendar
 
 calendar.prmonth(2013,7)
 
-result
+result 
 
 July 2013
 Mo Tu We Th Fr Sa Su
@@ -639,6 +760,7 @@ Mo Tu We Th Fr Sa Su
 15 16 17 18 19 20 21
 22 23 24 25 26 27 28
 29 30 31
+```
 
 —3.tkinter
 
@@ -648,22 +770,27 @@ Mo Tu We Th Fr Sa Su
 
 모듈내 함수를 사용하기 위해서는 모듈.변수 형식으로 써주어야한다.
 
+```python
 import tkinter
 
 tkinter.widget = tkinter.Label(None, text=’I love Python!’)
 
 tkinter.widget.pack()
+```
 
 —2 두번쨰 방법은 모듈 내의 함수를 콕찍어 가져오는 방법이다.
 
+```python
 **from** tkinter **import** *
 widget = Label(**None**, text='I love Python!')
 widget.pack()
+```
 
 이 예에서는 *로 전부를 가져 왔다.
 
 이렇게하면 모듈.함수가 아닌 함수명만 적어도 함수사용이 가능하다.
 
+```python
 Label = ‘This is a Label’
 
 from tkinter import *
@@ -671,6 +798,7 @@ from tkinter import *
 Label
 
 result <class ‘tkinter.Label’>
+```
 
 아래의 예에서 문자열이 었던 label이 임포트 문 실행 후 tkinter의 label로 바뀌어버렸다.
 
@@ -680,143 +808,25 @@ result <class ‘tkinter.Label’>
 
 —4 모듈 재적재
 
+```python
 from importlib import reload
 
 reload(모듈)
+```
 
 한 번 임포트한 모듈을 다시 불러올떄는 위와 같이 다시 로드 할 수 있다.
 
-—dir(모듈)
+—`dir(모듈)`
 
 모듈안에 어떤 내부 모듈들이 있는지 확인할 수 있다.
 
 —모듈안에 특정 문자열 포함하는 모듈 찾기
 
-[x for x in dir(모듈) if ‘leap’ in x]
+`[x for x in dir(모듈) if ‘leap’ in x]`
 
 모듈안에서 leap이라는 문자열을 포함하는 이름을 찾을 수 있다.
 
-집합으로서의 특성이 있으며 집합 연산을 사용할 수 있다.
-
-세트는 원소의 순서가 유지되지 않고 중복원소를 갖지 않은
-
-fruits.add(’mango’)
-
-result fruits={’apple’, ‘banana’, ‘mango’, ‘orange’}
-
-set1= set() 이런식으로 빈세트를 선언할 수도 있다.
-
-set1 & set2 교집합
-
-set1 | set2 합집합
-
-set1-set2 차집합
-
-alphabet = list(’google’)
-
-result [’g’, ‘o’, ‘o’, ‘g’, ‘l’, ‘e’]
-
-set(alphabet)
-
-result {’e’, ‘o’, ‘g’, ‘l’}
-
-지금까지 데이터타입. 자료구조를 다루었다.
-
-자료구조는 cpu내의 기억장소에서부터 크게는 파일, 데이터베이스, 전체 시스템에까지 두루 적용된다.
-
-1. 모듈
-
-여태껏 자급자족 하는 법이였다면
-
-import를 활용해 남이만들어 놓은 부품을 가져다 활용할 수도 있다.
-
-파이썬 뿐만 아니라 대부분의 언어에서 이런식으로 좋은 기능들을 묶어 모듈이나 라이브러리로 제공한다.
-
-—1.math
-
-import math
-
-math.sqrt(2)
-
-result 1.41421345...
-
-math.pi
-
-3.141592653
-
-—2.calendar
-
-import calendar
-
-calendar.prmonth(2013,7)
-
-result
-
-July 2013
-Mo Tu We Th Fr Sa Su
-1  2  3  4  5  6  7
-8  9 10 11 12 13 14
-15 16 17 18 19 20 21
-22 23 24 25 26 27 28
-29 30 31
-
-—3.tkinter
-
--2 파이썬에서 임포트 하는 방법에는 두가지가 있다.
-
-—1 첫번째 방법은 모듈 전체를 가져오는 방법이다.
-
-모듈내 함수를 사용하기 위해서는 모듈.변수 형식으로 써주어야한다.
-
-import tkinter
-
-tkinter.widget = tkinter.Label(None, text=’I love Python!’)
-
-tkinter.widget.pack()
-
-—2 두번쨰 방법은 모듈 내의 함수를 콕찍어 가져오는 방법이다.
-
-**from** tkinter **import** *
-widget = Label(**None**, text='I love Python!')
-widget.pack()
-
-이 예에서는 *로 전부를 가져 왔다.
-
-이렇게하면 모듈.함수가 아닌 함수명만 적어도 함수사용이 가능하다.
-
-Label = ‘This is a Label’
-
-from tkinter import *
-
-Label
-
-result <class ‘tkinter.Label’>
-
-아래의 예에서 문자열이 었던 label이 임포트 문 실행 후 tkinter의 label로 바뀌어버렸다.
-
-—3 del 모듈
-
-필요없는 모듈은 del 모듈로 지워주면 된다.
-
-—4 모듈 재적재
-
-from importlib import reload
-
-reload(모듈)
-
-한 번 임포트한 모듈을 다시 불러올떄는 위와 같이 다시 로드 할 수 있다.
-
-—dir(모듈)
-
-모듈안에 어떤 내부 모듈들이 있는지 확인할 수 있다.
-
-—모듈안에 특정 문자열 포함하는 모듈 찾기
-
-[x for x in dir(모듈) if ‘leap’ in x]
-
-모듈안에서 leap이라는 문자열을 포함하는 이름을 찾을 수 있다.
-
-—help(모듈.함수)
+—`help(모듈.함수)`
 
 함수의 사용법을 확인 할 수 있다.
 
@@ -824,7 +834,7 @@ reload(모듈)
 
 —`sys 모듈`
 
-파이썬 인터프리터의 디폴트 프롬프트는
+파이썬 인터프리터의 디폴트 프롬프트는 
 
 ```python
 >>>이다.
@@ -879,7 +889,7 @@ if m:
 
 print m.group()
 
-result
+result 
 
 pycon.ico
 
@@ -892,7 +902,7 @@ w9xpopen.exe
 
 (.)는 임의의 문자
 
-(*)는 0개 이상의 문자.
+(*)는 0개 이상의 문자. 
 
 즉 현재 디렉토리에서 p다음 n이 나오는 이름을 가지고 있는 파일을 찾아준다.
 
@@ -1002,7 +1012,7 @@ f = open(’LICENSE.txt)
 ‘A. HISTORY OF THE SOFTWARE\n’
 ```
 
-f.readline()을 대화형 인터프리터에 계속 쳐가면
+f.readline()을 대화형 인터프리터에 계속 쳐가면 
 
 ‘\n’ 개행문자까지 한줄 씩 다음 줄을 읽는다.
 
@@ -1022,7 +1032,7 @@ lines = f.readlines()
 lines[:2]
 ```
 
-여기서는 readline 함수가 아닌 readlines를 활용했다.
+여기서는 readline 함수가 아닌 readlines를 활용했다. 
 
 readlines를 활용하면 한줄 한줄이 각각의 리스트 원소로 들어간다.
 
@@ -1040,6 +1050,8 @@ print(l, end=’’)
 
 -리스트 문자열 합치기.
 
+```python
 abc=[’A’, ‘B’, ‘C’]
 
 str1 = ‘구분자‘.join(abc)
+```
